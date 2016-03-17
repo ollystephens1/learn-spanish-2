@@ -8,11 +8,9 @@ myApp.config(function($routeProvider) {
 		}).
 		when('/test', {
 			templateUrl: 'views/partials/play.html', 
-			controller: 'playCtrl	'
-		});
-		//otherwise({redirectTo: '/'});
-	
-	
+			controller: 'playCtrl'
+		}).
+		otherwise({redirectTo: '/'});
 });
 
 myApp.controller('flashcardCtrl', ['$scope', '$http', function($scope, $http) {
@@ -48,4 +46,3 @@ myApp.controller('playCtrl', ['$scope', '$http', function($scope, $http) {
 	console.log("PLAY CONTROLLER YO!");
 
 }]);
-

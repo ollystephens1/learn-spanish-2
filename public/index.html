@@ -26,7 +26,7 @@
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
 		<script src="bower_components/angular/angular.min.js"></script>
 		<script src="bower_components/angular-route/angular-route.min.js"></script>
-		<!-- <script type="text/javascript" src="js/controllers/flashcardController.js"></script> -->
+
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="assets/flat-ui/js/vendor/video.js"></script>
 		<script src="assets/flat-ui/js/flat-ui.min.js"></script>
@@ -37,11 +37,11 @@
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
 					<span class="sr-only">Toggle navigation</span>
 				</button>
-				<a class="navbar-brand" href="#">Learn Spanish</a>
+				<a class="navbar-brand" href="/#/">Learn Spanish</a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-01">
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="#fakelink">Play</a></li>
+					<li><a href="/#/test">Play</a></li>
 					<li><a href="#fakelink">Dictionary<span class="navbar-unread">1</span></a></li>
 					<li><a href="#fakelink">About</a></li>
 				</ul>
@@ -62,55 +62,9 @@
 		</nav>
 
 		<div class="container-fluid">
-			<div class="row" ng-controller="flashcardCtrl">
-				<div class="col-md-6">
-					<h4>Explore the dictionary</h4>	
-					<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>English</th>
-							<th>Spanish</th>
-							<th>Type</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="word in words">
-							<td>{{ word.eng }}</td>
-							<td>{{ word.esp }}</td>
-							<td>{{ word.type }}</td>
-							<td><button ng-click="removeWord(word._id)" class="btn btn-default delete-word"><span class="fui-trash"></span></button></td>
-						</tr>
-					</tbody>
-					</table>
-				</div>
-				<div class="col-md-6">
-					<h4>Add some new words</h4>
-					<div class="form-group">
-					    <input type="text" ng-model="word.eng" class="form-control input-lg" placeholder="English">
-					</div>
-					<div class="form-group">
-					    <input type="text" ng-model="word.esp" class="form-control input-lg" placeholder="Spanish">
-					</div>
-					<div class="form-group">
-						<select ng-model="word.type" class="form-control select select-primary select-block mbl">
-							<option value="" ng-disabled="expression">Type</option>
-							<option value="noun" >Noun</option>
-							<option value="verb">Verb</option>
-							<option value="adjective">Adjective</option>
-							<option value="phrase">Phrase</option>
-							<option value="adverb">Adverb</option>
-						</select>
-					</div>
-					
-					<button type="submit" ng-click="addWord()" class="btn btn-primary btn-wide">Add Word</button>
-				</div>
-			</div>
+			<div class="row" ng-view></div>
 		</div>
 		<!-- /.container -->
-		<script type="text/javascript" src="js/controllers/flashcardCtrl.js"></script>	
-		<script>
-			$("select").select2({dropdownCssClass: 'dropdown-inverse'});
-		</script>
+		<script type="text/javascript" src="app.js"></script>	
 	</body>
 </html>
