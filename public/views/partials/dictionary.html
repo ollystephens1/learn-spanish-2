@@ -1,0 +1,42 @@
+<div class="col-md-10 col-md-offset-1">
+
+	<div class="row">
+		<div class="col-sm-6">
+			<h4>Explore the dictionary</h4>
+		</div>
+
+		<div class="col-sm-6">
+			<div class="input-group">
+				<input ng-keyup="filterWords(filter)" type="text" class="form-control" ng-model="filter" placeholder="Search" id="search-query-3">
+				<span class="input-group-btn">
+				   	<button type="submit" class="btn"><span class="fui-search"></span></button>
+				</span>
+			</div>
+		</div>
+			
+		
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>English</th>
+						<th>Spanish</th>
+						<th>Type</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="word in words">
+						<td>{{ word.eng }}</td>
+						<td>{{ word.esp }}</td>
+						<td>{{ word.type }}</td>
+						<td><button ng-click="removeWord(word._id)" class="btn btn-default delete-word"><span class="fui-trash"></span></button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+

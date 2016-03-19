@@ -41,9 +41,9 @@
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-01">
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="/#/test">Play</a></li>
-					<li><a href="#fakelink">Dictionary<span class="navbar-unread">1</span></a></li>
-					<li><a href="#fakelink">About</a></li>
+					<li><a href="/#/add">Add Word</a></li>
+					<li><a href="/#/dictionary">Dictionary<span class="navbar-unread">1</span></a></li>
+					<li><a href="/#/about">About</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
@@ -62,9 +62,18 @@
 		</nav>
 
 		<div class="container-fluid">
+			<!-- Load view / controller based on Url -->
 			<div class="row" ng-view></div>
 		</div>
 		<!-- /.container -->
-		<script type="text/javascript" src="app.js"></script>	
+
+		<!-- Initiate awesomeness -->
+		<!-- create the app module first -->
+		<script type="text/javascript" src="app.js"></script>
+		<!-- then add controllers -->
+		<script src="js/controllers/playCtrl.js"></script>
+		<script src="js/controllers/wordCtrl.js"></script>
+		<script src="js/controllers/dictionaryCtrl.js"></script>
+		<script src="js/controllers/aboutCtrl.js"></script>
 	</body>
 </html>
