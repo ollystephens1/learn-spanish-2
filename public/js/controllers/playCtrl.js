@@ -6,19 +6,14 @@
     myApp.controller('playCtrl', ['$scope', '$http', function($scope, $http) {
 
     	// Clear filters on initial pageload
-    	$scope.filters = '';
+    	$scope.filters = null;
 
 		// Refresh current word
 		var refreshWord = function() {
-			// Set default get URL
-			var playURL = '/play';
+			console.log($scope.filters);
 
-			// Check for filters - append to URL if they exist
-			if($scope.filters) {
-				//playURL += "/" + $scope.filters;
-			}
-
-			$http.get(playURL).then(function(response) {
+			$http.get('/play', { params:$scope.filters}).then(function(response) {
+				console.log(response);
 				$scope.word = response.data;
 				$scope.showEsp = true;
 				$scope.showEspTxt = 'Show';

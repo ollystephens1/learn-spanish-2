@@ -5,8 +5,6 @@ var bodyParser = require('body-parser');
 var Word = require('./server/schemas/wordSchema.js');
 var random = require('mongoose-simple-random');
 
-
-
 // Initialise App
 var app = express();
 
@@ -31,7 +29,28 @@ db.once('open', function() {
 
 // Handles play request
 app.get('/play', function(req, res) {
-  Word.findOneRandom(function(err, word) {
+  var filters = req.query;
+
+  var min = (60*1000);
+  var params = {};
+  var time_since = "";
+
+  // FILTER: date
+  if(filters.date) {
+    switch(filters.date) {
+      case '1': time_since = min*10080; break; // 1 week
+      case '2': time_since = min*20160; break; // 2 weeks
+      case '3': time_since = min*43800; break; // 1 month
+      case '4': time_since = min*87600; break; // 2 months
+      case '5': time_since = min*262800; break; // 6 months 
+    }
+
+    var now = new Date(); 
+    var dateFilter = new Date(now.getTime() - time_since); 
+    params = {date_created: {$gt:dateFilter}};
+  }
+
+  Word.findOneRandom(params, function(err, word) {
     if (err) console.log(err);
     res.json(word); 
   });
