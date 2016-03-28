@@ -9,6 +9,7 @@ var wordSchema = mongoose.Schema({
 	esp: String,
 	type: String,
 	date_created: { type: Date, default: Date.now },
+	revision_list: Boolean,
 });
 
 // Enable simple-random middleware

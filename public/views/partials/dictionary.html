@@ -24,6 +24,8 @@
 						<th>English</th>
 						<th>Spanish</th>
 						<th>Type</th>
+						<th>Date added</th>
+						<th></th>
 						<th></th>
 					</tr>
 				</thead>
@@ -32,6 +34,8 @@
 						<td>{{ word.eng }}</td>
 						<td>{{ word.esp }}</td>
 						<td>{{ word.type }}</td>
+						<td>{{ word.date_created | date:'dd MMM yy' }}</td>
+						<td><button ng-click="toggleRevisionList(word._id)" class="btn btn-default delete-word"><span class="fui-trash"></span></button></td>
 						<td><button ng-click="removeWord(word._id)" class="btn btn-default delete-word"><span class="fui-trash"></span></button></td>
 					</tr>
 				</tbody>

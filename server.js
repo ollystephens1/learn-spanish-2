@@ -31,11 +31,11 @@ db.once('open', function() {
 app.get('/play', function(req, res) {
   var filters = req.query;
 
-  var min = (60*1000);
-  var params = {};
-  var time_since = "";
+  var min = (60*1000); // 1 minute
+  var params = {}; // Clear filters
+  var time_since = ""; // Clear filters
 
-  // FILTER: date
+  // Filter: date
   if(filters.date) {
     switch(filters.date) {
       case '1': time_since = min*10080; break; // 1 week
@@ -50,10 +50,24 @@ app.get('/play', function(req, res) {
     params = {date_created: {$gt:dateFilter}};
   }
 
+  // Filter: type
+  if(filters.type==true) {
+    params.type = filters.type;
+  }
+
+  // Filter: revision list
+  if(filters.revision_list) {
+    params.revision_list = filters.revision_list;
+  }
+
+  // Get word object from mongo
   Word.findOneRandom(params, function(err, word) {
-    if (err) console.log(err);
-    res.json(word); 
-  });
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(word); 
+    }
+  }); 
 });
 
 
@@ -72,7 +86,6 @@ app.get('/filterWords/:q', function(req, res) {
   Word.find({eng: new RegExp(q, 'i')}, function(err, words) {
     if (err) return console.error(err);
       res.json(words); // Send word back to Angular as confirmation
-      console.log(words);
   });
 });
 
@@ -83,7 +96,6 @@ app.post('/add', function(req, res) {
     word.save(function (err, word) {
       if (err) return console.error(err);
         res.json(word); // Send word back to Angular as confirmation
-        console.log(word);
     });
 });
 
@@ -93,12 +105,31 @@ app.delete('/dictionary/:id', function(req, res) {
     var id = req.params.id;
     Word.remove({ _id: id }, function(err) {
         if (!err) {
-            console.log(id);
             res.json(id);
         } else {
-            console.log("Something went wrong...");
+            console.log(err);
         }
     });
+});
+
+
+// Handles adding / removing word from the revision list
+app.post('/toggleRevisionList', function(req, res) {
+  var revision_list = req.body.revision_list;
+  if(revision_list == true) {
+    revision_list = false;
+  } else {
+    revision_list = true;
+  }
+
+  Word.update({ _id: req.body._id }, { revision_list: revision_list }, function(err) {
+    if (!err) {
+        res.json(revision_list);
+    } else {
+        console.log(err);
+    }
+  });
+  
 });
 
 

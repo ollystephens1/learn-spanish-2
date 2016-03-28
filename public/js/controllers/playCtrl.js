@@ -10,10 +10,11 @@
 
 		// Refresh current word
 		var refreshWord = function() {
-			console.log($scope.filters);
-
+			
+			if($scope.filters) {
+				if($scope.filters.revision_list==false) delete $scope.filters.revision_list;	
+			}
 			$http.get('/play', { params:$scope.filters}).then(function(response) {
-				console.log(response);
 				$scope.word = response.data;
 				$scope.showEsp = true;
 				$scope.showEspTxt = 'Show';
@@ -37,6 +38,13 @@
 				$scope.showEspTxt = "Show";
 			}
 		};	
+
+		// Add / Remove word from revision list
+		$scope.toggleRevisionList = function() {
+			$http.post('/toggleRevisionList', $scope.word).then(function(response) {
+				$scope.word.revision_list = response.data
+			});
+		};
 
 	}]);
 	 
