@@ -15,7 +15,11 @@
 				if($scope.filters.revision_list==false) delete $scope.filters.revision_list;	
 			}
 			$http.get('/play', { params:$scope.filters}).then(function(response) {
-				$scope.word = response.data;
+				if(response.data == null) {
+					$scope.word.eng = "No words found";
+				} else {
+					$scope.word = response.data;
+				}
 				$scope.showEsp = true;
 				$scope.showEspTxt = 'Show';
 			});
