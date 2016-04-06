@@ -65,6 +65,7 @@ app.get('/play', function(req, res) {
     if (err) {
       console.log(err);
     } else {
+      console.log(word);
       res.json(word); 
     }
   }); 
@@ -97,6 +98,20 @@ app.post('/add', function(req, res) {
       if (err) return console.error(err);
         res.json(word); // Send word back to Angular as confirmation
     });
+});
+
+
+// Handles word import
+app.post('/import-words', function(req, res) {
+    var words = req.body;
+    words.forEach(function(w) {
+        var word = new Word(w);
+        word.save(function (err, word) {
+          if (err) return console.error(err);
+            console.log("successfully added!");
+        });
+    });
+    
 });
 
 
