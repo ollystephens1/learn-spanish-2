@@ -1,4 +1,4 @@
-<div class="col-md-7 col-md-offset-1 omes-center">
+<div class="col-md-7 col-md-offset-1 omes-center play-box">
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1 omes-center eng">
 			<h3>{{ word.eng }}</h3>
@@ -16,8 +16,7 @@
 	</div>
 </div>
 
-<div class="col-md-3">
-	<h6>Filter the words you want to practice.</h6>
+<div class="col-md-3 play-filters">
 	<div class="form-group">
 		<select ng-model="filters.date" class="form-control select select-primary select-block mbl">
 			<option value="" ng-disabled="expression">Filter by last added</option>

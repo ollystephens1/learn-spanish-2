@@ -22,6 +22,16 @@ body {
     @include gradient(#eee,#FFF);
 }
 
+@media all and (max-width: 500px) { /* screen size until 500px */
+	.navbar { margin-bottom: 0px; }
+
+	.dictionary-tbl { margin-top: 10px; font-size: 0.8em; }
+	h4 { text-align: center; }
+	.play-box h3 { font-size: 2em; }
+	.play-filters { margin-top: 40px; }
+    
+}
+
 /***** Dictionary styles *****/
 .dict-icon { height: 30px; width: 30px; padding: 0; float: right; margin-right:5px; }
 

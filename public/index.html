@@ -37,13 +37,13 @@
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
 					<span class="sr-only">Toggle navigation</span>
 				</button>
-				<a class="navbar-brand" href="/#/">Learn Spanish</a>
+				<a class="navbar-brand go" href="/#/">Learn Spanish</a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-01">
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="/#/add">Add Word</a></li>
-					<li><a href="/#/dictionary">Dictionary<span class="navbar-unread">1</span></a></li>
-					<li><a href="/#/about">About</a></li>
+					<li><a class="go" href="/#/add">Add Word</a></li>
+					<li><a class="go" href="/#/dictionary">Dictionary<span class="navbar-unread">1</span></a></li>
+					<li><a class="go" href="/#/about">About</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
@@ -75,5 +75,14 @@
 		<script src="js/controllers/wordCtrl.js"></script>
 		<script src="js/controllers/dictionaryCtrl.js"></script>
 		<script src="js/controllers/aboutCtrl.js"></script>
+
+		<script>
+		$(document).ready(function() {
+			// Hack to hide collapsed nav after clicking a link
+			$(".go").click(function() {
+				$("#navbar-collapse-01").removeClass("in");
+			});
+		});
+		</script>
 	</body>
 </html>
