@@ -1,3 +1,9 @@
+var express = require('express')
+  , app = express()
+  , port = process.env.PORT || 3000
+
+
+
 // Load dependencies
 var express = require('express');
 var mongoose = require('mongoose');
@@ -6,7 +12,7 @@ var Word = require('./server/schemas/wordSchema.js');
 var random = require('mongoose-simple-random');
 
 // Initialise App
-var app = express();
+//var app = express();
 
 // Set default public directory
 app.use(express.static(__dirname + '/public'));
@@ -171,8 +177,8 @@ app.post('/toggleRevisionList', function(req, res) {
 /******************** SERVER **********************/
 
 // Launch server
-app.listen(3000, function() {
-	console.log("Learn Spanish running on port 3000");
+app.listen(port, function() {
+	console.log("Learn Spanish running on port " + port);
 });
 
 
