@@ -22,7 +22,10 @@ body {
     @include gradient(#eee,#FFF);
 }
 
-.delete-word { height: 30px; width: 30px; padding: 0; float: right; }
+/***** Dictionary styles *****/
+.dict-icon { height: 30px; width: 30px; padding: 0; float: right; margin-right:5px; }
+
+
 .omes-center { text-align: center; }
 .omes-margin { margin-top: 2%; }
 .play-controls { margin-top: 5%; }

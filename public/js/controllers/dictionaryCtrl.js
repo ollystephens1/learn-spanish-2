@@ -32,9 +32,9 @@
         };
 
         // Add / Remove word from revision list
-        $scope.toggleRevisionList = function() {
-            $http.post('/toggleRevisionList', $scope.word).then(function(response) {
-                $scope.word.revision_list = response.data;
+        $scope.toggleRevisionList = function(word) {
+            $http.post('/toggleRevisionList', word).then(function(response) {
+                refresh();
             });
         };
 

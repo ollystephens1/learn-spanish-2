@@ -11,11 +11,13 @@ body {
   /* For Firefox 3.6 to 15 */
   background-color: linear-gradient(#eee, #FFF); }
 
-.delete-word {
+/***** Dictionary styles *****/
+.dict-icon {
   height: 30px;
   width: 30px;
   padding: 0;
-  float: right; }
+  float: right;
+  margin-right: 5px; }
 
 .omes-center {
   text-align: center; }
