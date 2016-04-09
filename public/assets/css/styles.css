@@ -10,6 +10,8 @@ body {
   background-color: -moz-linear-gradient(#eee, #FFF);
   /* For Firefox 3.6 to 15 */
   background-color: linear-gradient(#eee, #FFF); }
+  body select, body textarea, body input[type="text"], body input[type="password"], body input[type="datetime"], body input[type="datetime-local"], body input[type="date"], body input[type="month"], body input[type="time"], body input[type="week"], body input[type="number"], body input[type="email"], body input[type="url"], body input[type="search"], body input[type="tel"], body input[type="color"] {
+    font-size: 16px; }
 
 @media all and (max-width: 500px) {
   /* screen size until 500px */
