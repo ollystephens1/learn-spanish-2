@@ -8,6 +8,8 @@
     	var refresh = function() {
     		$http.get('/dictionary').then(function(response) {
     	    	$scope.words = response.data;
+
+                console.log($scope.words);
         	});
     	};
 
@@ -32,9 +34,9 @@
         };
 
         // Add / Remove word from revision list
-        $scope.toggleRevisionList = function(word) {
+        $scope.toggleRevisionList = function(key, word) {
             $http.post('/toggleRevisionList', word).then(function(response) {
-                refresh();
+                $scope.words[key].revision_list = response.data;
             });
         };
 

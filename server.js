@@ -80,6 +80,20 @@ app.get('/play', function(req, res) {
 
 // Handles dictionary request
 app.get('/dictionary', function(req, res) { 
+  
+  /* WORKS!
+  Word.find(function (err, words) {
+    if (err) return console.error(err)
+      res.json(words); // Send all words to Angular
+  });
+  
+ 
+  Word.query.limit(20).exec(function (err, words) {
+    if (err) return console.error(err)
+      res.json(words); // Send all words to Angular
+  });
+  */
+
   Word.
   find({}).
   sort([['date_created', 'descending']]).
@@ -88,6 +102,8 @@ app.get('/dictionary', function(req, res) {
     if (err) return console.error(err)
       res.json(words); // Send all words to Angular
   });
+
+
 });
 
 

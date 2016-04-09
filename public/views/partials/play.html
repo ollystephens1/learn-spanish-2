@@ -17,34 +17,47 @@
 </div>
 
 <div class="col-md-3 play-filters">
-	<div class="form-group">
-		<select ng-model="filters.date" class="form-control select select-primary select-block mbl">
-			<option value="" ng-disabled="expression">Filter by last added</option>
-			<option value="1">This week</option>
-			<option value="2">Two weeks ago</option>
-			<option value="3">One month ago</option>
-			<option value="4">Two months ago</option>
-			<option value="5">Six months ago</option>
-		</select>
-	</div>
+	<div class="panel-group" id="accordion">
+	  	<div class="panel panel-default">
+	    	<div class="panel-heading">
+		      	<h4 class="panel-title">
+		        	<a data-toggle="collapse" class="filter-accordian" data-parent="#accordion" href="#collapse1">Filters</a>
+		      	</h4>
+		    </div>
+		    <div id="collapse1" class="panel-collapse collapse">
+		      	<div class="panel-body">
+		      		<div class="form-group">
+						<select ng-model="filters.date" class="form-control select select-primary select-block mbl">
+							<option value="" ng-disabled="expression">Filter by last added</option>
+							<option value="1">This week</option>
+							<option value="2">Two weeks ago</option>
+							<option value="3">One month ago</option>
+							<option value="4">Two months ago</option>
+							<option value="5">Six months ago</option>
+						</select>
+					</div>
 
-	<div class="form-group">
-		<select ng-model="filters.type" class="form-control select select-primary select-block mbl">
-			<option value="" ng-disabled="expression">Filter by type</option>
-			<option value="noun" >Noun</option>
-			<option value="verb">Verb</option>
-			<option value="adjective">Adjective</option>
-			<option value="phrase">Phrase</option>
-			<option value="adverb">Adverb</option>
-		</select>
-	</div>
+					<div class="form-group">
+						<select ng-model="filters.type" class="form-control select select-primary select-block mbl">
+							<option value="" ng-disabled="expression">Filter by type</option>
+							<option value="noun" >Noun</option>
+							<option value="verb">Verb</option>
+							<option value="adjective">Adjective</option>
+							<option value="phrase">Phrase</option>
+							<option value="adverb">Adverb</option>
+						</select>
+					</div>
 
-	<div class="form-group">
-		<div class="checkbox">
-		    <label>
-		      	<input type="checkbox" ng-model="filters.revision_list"> Revision list
-		    </label>
-		</div>
+					<div class="form-group">
+						<div class="checkbox">
+						    <label>
+						      	<input type="checkbox" ng-model="filters.revision_list"> Revision list
+						    </label>
+						</div>
+					</div>
+		      	</div>
+		    </div>
+	  	</div>
 	</div>
 </div>
 <script>
@@ -53,6 +66,10 @@
 		$("select").select2({dropdownCssClass: 'dropdown-inverse'});
 
 		$(':checkbox').radiocheck();
+
+		$(".filter-accordian").click(function(e) {
+			e.preventDefault();
+		});
 	});
 </script>
 
