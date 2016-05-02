@@ -2,17 +2,11 @@ var express = require('express')
   , app = express()
   , port = process.env.PORT || 3000
 
-
-
 // Load dependencies
-var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var Word = require('./server/schemas/wordSchema.js');
 var random = require('mongoose-simple-random');
-
-// Initialise App
-//var app = express();
 
 // Set default public directory
 app.use(express.static(__dirname + '/public'));
@@ -28,7 +22,6 @@ db.once('open', function() {
     // Connected! 
     console.log("Successfully connected to mongodb");
 });
-
 
 
 /******************** ROUTES **********************/
@@ -74,26 +67,12 @@ app.get('/play', function(req, res) {
       console.log(word);
       res.json(word); 
     }
-  }); 
+  });   
 });
 
 
 // Handles dictionary request
-app.get('/dictionary', function(req, res) { 
-  
-  /* WORKS!
-  Word.find(function (err, words) {
-    if (err) return console.error(err)
-      res.json(words); // Send all words to Angular
-  });
-  
- 
-  Word.query.limit(20).exec(function (err, words) {
-    if (err) return console.error(err)
-      res.json(words); // Send all words to Angular
-  });
-  */
-
+app.get('/getDictionary', function(req, res) { 
   Word.
   find({}).
   sort([['date_created', 'descending']]).
@@ -102,8 +81,6 @@ app.get('/dictionary', function(req, res) {
     if (err) return console.error(err)
       res.json(words); // Send all words to Angular
   });
-
-
 });
 
 
@@ -142,7 +119,7 @@ app.post('/import-words', function(req, res) {
 
 
 // Handles deleting a word
-app.delete('/dictionary/:id', function(req, res) {
+app.delete('/getDictionary/:id', function(req, res) {
     var id = req.params.id;
     Word.remove({ _id: id }, function(err) {
         if (!err) {
@@ -173,6 +150,11 @@ app.post('/toggleRevisionList', function(req, res) {
   
 });
 
+
+// Default route (if exists in Angular but not in API)
+app.get('*', function (req, res) {
+    res.sendFile(__dirname +'/public/index.html');
+});
 
 
 /******************** SERVER **********************/

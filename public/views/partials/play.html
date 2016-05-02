@@ -9,9 +9,9 @@
 			<h3 ng-hide="showEsp">{{ word.esp }}</h3>
 		</div>
 	</div>
-		<div class="row play-controls omes-center">
-		<button type="submit" ng-click="toggleWord()" class="btn btn-primary btn-hg" ng-model="showEspTxt">{{showEspTxt}}</button>
+	<div class="row play-controls omes-center">
 		<button ng-click="toggleRevisionList()" class="btn btn-hg" ng-class="word.revision_list==true ? 'btn-warning' : 'btn-default'"><span class="fui-star-2"></span></button>
+		<button type="submit" ng-click="toggleWord()" class="btn btn-primary btn-hg" ng-model="showEspTxt">{{showEspTxt}}</button>
 		<button type="submit" ng-click="getWord()" class="btn btn-primary btn-hg">Next</button>
 	</div>
 </div>

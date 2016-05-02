@@ -6,7 +6,7 @@
     myApp.controller('dictionaryCtrl', ['$scope', '$http', function($scope, $http) {
     	// Refreshes the dictionary table
     	var refresh = function() {
-    		$http.get('/dictionary').then(function(response) {
+    		$http.get('/getDictionary').then(function(response) {
     	    	$scope.words = response.data;
 
                 console.log($scope.words);
@@ -16,7 +16,7 @@
     	refresh(); // Call get on initial page load
 
         $scope.removeWord = function(id) {
-        	$http.delete('/dictionary/' + id).then(function(response) {
+        	$http.delete('/getDictionary/' + id).then(function(response) {
         		refresh();
         	});
         };
