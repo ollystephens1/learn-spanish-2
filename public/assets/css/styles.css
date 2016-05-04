@@ -15,7 +15,9 @@ body {
 .play-box .eng {
   height: 200px; }
   .play-box .eng h3 {
-    font-size: 60px; }
+    font-size: 60px;
+    margin-top: 0px;
+    margin-bottom: 0px; }
 .play-box .play-controls {
   margin-top: 5%; }
 
@@ -48,7 +50,7 @@ body {
     text-align: center; }
 
   .play-box .eng {
-    height: 170px !important; }
+    height: 130px !important; }
     .play-box .eng h3 {
       font-size: 2em !important; }
 

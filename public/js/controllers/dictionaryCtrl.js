@@ -4,12 +4,11 @@
     var myApp = angular.module('myApp');
 
     myApp.controller('dictionaryCtrl', ['$scope', '$http', function($scope, $http) {
+
     	// Refreshes the dictionary table
     	var refresh = function() {
     		$http.get('/getDictionary').then(function(response) {
-    	    	$scope.words = response.data;
-
-                console.log($scope.words);
+                $scope.words = response.data;
         	});
     	};
 
@@ -26,7 +25,16 @@
             var q = $scope.filter;
             if(q.length > 0) {
                 $http.get('/filterWords/' + q).then(function(response) {
-                    $scope.words = response.data;
+
+                    if(response.data.length > 0) {
+                        $scope.noWordsFound = false;
+                        $scope.words = response.data;
+                    } else {
+                        
+                        $scope.noWordsFound = true;
+                    }
+
+
                 });
             } else {
                 refresh();

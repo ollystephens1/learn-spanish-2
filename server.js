@@ -1,8 +1,10 @@
+// Initialise Express app
 var express = require('express')
   , app = express()
   , port = process.env.PORT || 3000
 
 // Load dependencies
+var favicon = require('serve-favicon');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var Word = require('./server/schemas/wordSchema.js');
@@ -10,6 +12,11 @@ var random = require('mongoose-simple-random');
 
 // Set default public directory
 app.use(express.static(__dirname + '/public'));
+
+// Set favicon
+app.use(favicon(__dirname + '/public/favicon.ico'));
+
+// Set bodyParser default
 app.use(bodyParser.json());
 
 // Load connection to mongodb
@@ -64,7 +71,6 @@ app.get('/play', function(req, res) {
     if (err) {
       console.log(err);
     } else {
-      console.log(word);
       res.json(word); 
     }
   });   

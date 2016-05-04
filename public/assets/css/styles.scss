@@ -22,7 +22,7 @@ body {
 // Play
 .play-box {
 	.eng { height: 200px; 
-		h3 { font-size: 60px; }
+		h3 { font-size: 60px; margin-top: 0px; margin-bottom: 0px; }
 	}
 	.play-controls { margin-top: 5%; }
 }
@@ -47,7 +47,7 @@ body {
 	h4 { text-align: center; }
 	//.play-box h3 { font-size: 2em; }
 	.play-box {
-		.eng { height: 170px !important;  
+		.eng { height: 130px !important;  
 			h3 { font-size: 2em !important; }
 		}
 	}
